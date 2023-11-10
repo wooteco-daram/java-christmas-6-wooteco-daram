@@ -7,10 +7,11 @@ import exception.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("메뉴 테스트")
 class MenuTest {
     @Test
     @DisplayName("메뉴 이름으로 메뉴를 찾을 수 있다.")
-    void Should_Get_Menu_When_Find_By_Name() {
+    void Should_Get_Menu_When_Find_From_Exist_Name() {
         //given
         final String name = "양송이수프";
         final Menu expected = Menu.PINE_MUSHROOM_SOUP;
