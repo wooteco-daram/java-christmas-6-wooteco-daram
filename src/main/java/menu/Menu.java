@@ -1,6 +1,6 @@
 package menu;
 
-import exception.ChristmasException;
+import exception.GlobalException;
 import exception.ErrorMessage;
 import java.util.Arrays;
 import java.util.Map;
@@ -48,6 +48,6 @@ public enum Menu {
 
     public static Menu findByName(final String name) {
         return Optional.ofNullable(names.get(name))
-                .orElseThrow(() -> ChristmasException.of(ErrorMessage.INVALID_MENU));
+                .orElseThrow(() -> GlobalException.from(ErrorMessage.INVALID_MENU));
     }
 }
