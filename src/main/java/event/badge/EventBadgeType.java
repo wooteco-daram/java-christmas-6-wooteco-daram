@@ -5,10 +5,10 @@ import java.util.function.Predicate;
 import menu.Price;
 
 public enum EventBadgeType {
-    NONE("없음", price -> price.price() < 5_000),
-    STAR("별", price -> price.price() >= 5_000),
-    TREE("트리", price -> price.price() >= 10_000),
-    SANTA("산타", price -> price.price() >= 20_000);
+    NONE("없음", EventBadgePriceMinimumCriteria.NONE::isSatisfied),
+    STAR("별", EventBadgePriceMinimumCriteria.STAR::isSatisfied),
+    TREE("트리", EventBadgePriceMinimumCriteria.TREE::isSatisfied),
+    SANTA("산타", EventBadgePriceMinimumCriteria.SANTA::isSatisfied);
 
     private final String name;
     private final Predicate<Price> pricePredicate;
