@@ -42,8 +42,8 @@ public enum Menu {
         return name;
     }
 
-    public long getPrice() {
-        return price.price();
+    public Price getPrice() {
+        return price;
     }
 
     public static Menu findByName(final String name) {
