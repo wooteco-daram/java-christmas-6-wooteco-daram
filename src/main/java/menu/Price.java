@@ -11,4 +11,9 @@ public record Price(long price) {
             throw new IllegalArgumentException("가격은 음수가 될 수 없습니다.");
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("%,d", price);
+    }
 }
