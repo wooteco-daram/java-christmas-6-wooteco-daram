@@ -1,4 +1,4 @@
-package menu;
+package domain.menu;
 
 import java.util.List;
 
@@ -11,7 +11,10 @@ public enum MenuBoard {
     private final String category;
     private final List<Menu> categoryMenus;
 
-    MenuBoard(final String category, final List<Menu> categoryMenus) {
+    MenuBoard(
+            final String category,
+            final List<Menu> categoryMenus
+    ) {
         this.category = category;
         this.categoryMenus = categoryMenus;
     }
@@ -28,5 +31,9 @@ public enum MenuBoard {
         return from.stream()
                 .filter(categoryMenus::contains)
                 .count();
+    }
+
+    public boolean hasMenu(Menu menu) {
+        return categoryMenus.contains(menu);
     }
 }

@@ -1,5 +1,6 @@
-package menu;
+package domain.menu;
 
+import domain.price.Price;
 import exception.GlobalException;
 import exception.ErrorMessage;
 import java.util.Arrays;
@@ -33,7 +34,10 @@ public enum Menu {
     private final String name;
     private final Price price;
 
-    Menu(final String name, final Price price) {
+    Menu(
+            final String name,
+            final Price price
+    ) {
         this.name = name;
         this.price = price;
     }
