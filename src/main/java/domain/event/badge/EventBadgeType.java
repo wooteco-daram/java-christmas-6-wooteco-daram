@@ -1,8 +1,8 @@
-package event.badge;
+package domain.event.badge;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
-import menu.Price;
+import domain.price.Price;
 
 public enum EventBadgeType {
     NONE("없음", EventBadgePriceMinimumCriteria.NONE::isSatisfied),
@@ -34,5 +34,10 @@ public enum EventBadgeType {
                 .filter(eventBadgeType -> eventBadgeType.test(price))
                 .reduce((first, second) -> second)
                 .orElse(EventBadgeType.NONE);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

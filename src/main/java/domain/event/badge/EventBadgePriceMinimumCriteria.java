@@ -1,6 +1,6 @@
-package event.badge;
+package domain.event.badge;
 
-import menu.Price;
+import domain.price.Price;
 
 public enum EventBadgePriceMinimumCriteria {
     NONE(new Price(0)),

@@ -1,9 +1,10 @@
-package event.badge;
+package domain.event.badge;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import domain.event.badge.EventBadgeType;
 import java.util.stream.Stream;
-import menu.Price;
+import domain.price.Price;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
