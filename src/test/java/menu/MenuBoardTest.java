@@ -2,6 +2,8 @@ package menu;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import domain.menu.Menu;
+import domain.menu.MenuBoard;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
