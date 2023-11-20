@@ -23,7 +23,7 @@ public class TotalDiscountPrice {
     @Override
     public String toString() {
         if (totalDiscountPrice.price() == 0) {
-            return "없음";
+            return "0원";
         }
 
         return "-" + totalDiscountPrice.toString();
