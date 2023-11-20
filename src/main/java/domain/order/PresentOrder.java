@@ -28,14 +28,6 @@ public enum PresentOrder {
         this.presentCondition = presentCondition;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public OrderCount getOrderCount() {
-        return orderCount;
-    }
-
     public DiscountPrice getDiscountPrice() {
         Price price = menu.getPrice();
         Price multiplyPrice = price.multiply(orderCount.count());
