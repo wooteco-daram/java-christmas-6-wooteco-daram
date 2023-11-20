@@ -18,10 +18,6 @@ public class TotalPrice {
 
     @Override
     public String toString() {
-        if (totalPrice.price() == 0) {
-            return "없음";
-        }
-
         return totalPrice.toString();
     }
 }
