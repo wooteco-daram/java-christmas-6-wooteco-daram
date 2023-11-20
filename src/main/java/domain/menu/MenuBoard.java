@@ -19,14 +19,6 @@ public enum MenuBoard {
         this.categoryMenus = categoryMenus;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public List<Menu> getCategoryMenus() {
-        return categoryMenus.stream().toList();
-    }
-
     public long countOverlap(final List<Menu> from) {
         return from.stream()
                 .filter(categoryMenus::contains)
