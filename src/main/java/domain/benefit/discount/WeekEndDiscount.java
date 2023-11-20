@@ -30,19 +30,22 @@ public class WeekEndDiscount extends Discount {
 
     @Override
     public DiscountPrice getDiscountPrice() {
-        final LocalDate targetDate = LocalDate.of(
-                EventConstants.EVENT_YEAR,
-                EventConstants.EVENT_MONTH,
-                reservationDay.reservationDay()
-        );
-        final DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
-
-        if (!EventConstants.weekends.contains(dayOfWeek)) {
+        if (!isValidWeekEnd()) {
             return DiscountPrice.empty();
         }
 
         final long countMain = MenuBoard.MAIN.countOverlap(orderGroup.getMenus());
         final long totalWeekDay = DISCOUNT_PRICE_PER_MAIN_COUNT * countMain;
         return new DiscountPrice(new Price(totalWeekDay));
+    }
+
+    private boolean isValidWeekEnd() {
+        final LocalDate targetDate = LocalDate.of(
+                EventConstants.EVENT_YEAR,
+                EventConstants.EVENT_MONTH,
+                reservationDay.reservationDay()
+        );
+        final DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+        return EventConstants.WEEKENDS.contains(dayOfWeek);
     }
 }
