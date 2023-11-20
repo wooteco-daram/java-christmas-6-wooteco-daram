@@ -7,6 +7,7 @@ import exception.GlobalException;
 
 public class Order {
    private static final String ORDER_SPLIT_DELIMITER = "-";
+   private static final int ORDER_SPLIT_LENGTH = 2;
 
     private final Menu menu;
     private final OrderCount count;
@@ -30,7 +31,7 @@ public class Order {
     }
 
     private static void validateOrderSplit(final String[] orderSplit) {
-        if (orderSplit.length != 2) {
+        if (orderSplit.length != ORDER_SPLIT_LENGTH) {
             throw GlobalException.from(ErrorMessage.INVALID_MENU);
         }
     }
