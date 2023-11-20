@@ -21,10 +21,6 @@ public enum EventBadgeType {
         this.pricePredicate = pricePredicate;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public boolean test(final Price price) {
         return pricePredicate.test(price);
     }
