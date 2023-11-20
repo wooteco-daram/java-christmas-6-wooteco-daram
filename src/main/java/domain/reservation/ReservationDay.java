@@ -12,7 +12,11 @@ public record ReservationDay(int reservationDay) {
     }
 
     private void validateReservationDay(final int reservationDay) {
-        if (!DateUtil.isValidDate(EventConstants.EVENT_YEAR, EventConstants.EVENT_MONTH, reservationDay)) {
+        if (!DateUtil.isValidDate(
+                EventConstants.EVENT_YEAR,
+                EventConstants.EVENT_MONTH,
+                reservationDay)
+        ) {
             throw GlobalException.from(ErrorMessage.INVALID_DATE);
         }
     }
