@@ -22,7 +22,7 @@ public class SpecialDiscount extends Discount {
     @Override
     public DiscountPrice getDiscountPrice() {
         final int day = reservationDay.reservationDay();
-        if (!EventConstants.starDays.contains(day)) {
+        if (!EventConstants.SPECIAL_DAYS.contains(day)) {
             return DiscountPrice.empty();
         }
 
