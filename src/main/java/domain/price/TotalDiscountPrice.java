@@ -12,10 +12,6 @@ public class TotalDiscountPrice {
                 .orElse(new Price(0));
     }
 
-    public static TotalDiscountPrice empty() {
-        return new TotalDiscountPrice(List.of());
-    }
-
     public Price getTotalDiscountPrice() {
         return totalDiscountPrice;
     }
