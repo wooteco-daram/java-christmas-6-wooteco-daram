@@ -1,5 +1,8 @@
 package domain.price;
 
+import exception.ErrorMessage;
+import exception.GlobalException;
+
 public record Price(long price) {
     private static final long EMPTY_PRICE = 0L;
 
@@ -13,7 +16,7 @@ public record Price(long price) {
 
     private void validateNegativePrice(final long price) {
         if (price < 0) {
-            throw new IllegalArgumentException("가격은 음수가 될 수 없습니다.");
+            throw GlobalException.from(ErrorMessage.INVALID_PRICE);
         }
     }
 
