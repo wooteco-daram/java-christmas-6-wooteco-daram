@@ -9,7 +9,7 @@ public class GlobalException extends IllegalArgumentException {
         ExceptionHandler.handle(this);
     }
 
-    public static GlobalException from(ErrorMessage errorMessage) {
+    public static GlobalException from(final ErrorMessage errorMessage) {
         return new GlobalException(errorMessage.getMessage());
     }
 }
