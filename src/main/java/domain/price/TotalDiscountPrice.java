@@ -9,7 +9,7 @@ public class TotalDiscountPrice {
         totalDiscountPrice = discountPrices.stream()
                 .map(DiscountPrice::price)
                 .reduce(Price::add)
-                .orElse(new Price(0));
+                .orElse(Price.empty());
     }
 
     public Price getTotalDiscountPrice() {

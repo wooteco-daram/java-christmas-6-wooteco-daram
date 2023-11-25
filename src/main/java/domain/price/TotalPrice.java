@@ -9,7 +9,7 @@ public class TotalPrice {
     public TotalPrice(final List<Price> prices) {
         totalPrice = prices.stream()
                 .reduce(Price::add)
-                .orElse(new Price(0));
+                .orElse(Price.empty());
     }
 
     public Price getTotalPrice() {
