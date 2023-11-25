@@ -3,7 +3,7 @@ package domain.event.badge;
 import domain.price.Price;
 
 public enum EventBadgePriceMinimumCriteria {
-    NONE(new Price(0)),
+    NONE(Price.empty()),
     STAR(new Price(5_000)),
     TREE(new Price(10_000)),
     SANTA(new Price(20_000));

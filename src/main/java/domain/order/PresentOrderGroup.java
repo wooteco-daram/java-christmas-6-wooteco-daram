@@ -20,7 +20,7 @@ public class PresentOrderGroup {
                 .map(DiscountPrice::price)
                 .reduce(Price::add)
                 .map(DiscountPrice::new)
-                .orElse(new DiscountPrice(new Price(0)));
+                .orElse(DiscountPrice.empty());
     }
 
     @Override
