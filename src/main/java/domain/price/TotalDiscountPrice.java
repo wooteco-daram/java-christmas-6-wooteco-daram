@@ -1,27 +1,28 @@
 package domain.price;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TotalDiscountPrice {
-    private final Price totalDiscountPrice;
+    private final Price price;
 
     public TotalDiscountPrice(final List<DiscountPrice> discountPrices) {
-        totalDiscountPrice = discountPrices.stream()
+        price = discountPrices.stream()
                 .map(DiscountPrice::price)
                 .reduce(Price::add)
                 .orElse(Price.empty());
     }
 
-    public Price getTotalDiscountPrice() {
-        return totalDiscountPrice;
+    public Price getPrice() {
+        return price;
     }
 
     @Override
     public String toString() {
-        if (totalDiscountPrice.price() == 0) {
-            return "0원";
+        if (Objects.equals(price, Price.empty())) {
+            return price.toString();
         }
 
-        return "-" + totalDiscountPrice.toString();
+        return "-" + price;
     }
 }

@@ -16,7 +16,7 @@ public abstract class Discount {
     }
 
     private boolean shouldDiscount(final TotalPrice totalPrice) {
-        final Price price = totalPrice.getTotalPrice();
+        final Price price = totalPrice.getPrice();
         return !price.isLessThan(EventConstants.MINIMUM_TOTAL_PRICE_FOR_DISCOUNT);
     }
 

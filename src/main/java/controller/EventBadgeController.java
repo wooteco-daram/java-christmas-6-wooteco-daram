@@ -14,7 +14,7 @@ public class EventBadgeController extends Controller {
     }
 
     public void calculateEventBadge(final TotalDiscountPrice totalDiscountPrice) {
-        final EventBadgeType eventBadgeType = EventBadgeType.findByPrice(totalDiscountPrice.getTotalDiscountPrice());
+        final EventBadgeType eventBadgeType = EventBadgeType.findByPrice(totalDiscountPrice.getPrice());
         eventBadgeOutputView.printEventBadge(eventBadgeType);
     }
 }
