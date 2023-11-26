@@ -28,7 +28,7 @@ public enum EventBadgeType {
     public static EventBadgeType findByPrice(final Price price) {
         return Arrays.stream(values())
                 .filter(eventBadgeType -> eventBadgeType.test(price))
-                .reduce((first, second) -> second)
+                .reduce((unused, eventBadgeType) -> eventBadgeType)
                 .orElse(EventBadgeType.NONE);
     }
 
