@@ -22,7 +22,7 @@ public record OrderCount(long count) {
     }
 
     private static class OrderCountParser {
-        public static int parse(final String countForm) {
+        private static int parse(final String countForm) {
             try {
                 return Integer.parseInt(countForm);
             } catch (NumberFormatException exception) {

@@ -85,7 +85,7 @@ public record OrderGroup(List<Order> orders) {
     private static class OrderParser {
         private static final String ORDER_DELIMITER = ",";
 
-        public static List<Order> parse(final String orderForm) {
+        private static List<Order> parse(final String orderForm) {
             final String[] orderFormSplit = orderForm.split(ORDER_DELIMITER);
             return Arrays.stream(orderFormSplit)
                     .map(String::trim)

@@ -58,7 +58,7 @@ public class Order {
         private static final String ORDER_SPLIT_DELIMITER = "-";
         private static final int ORDER_SPLIT_LENGTH = 2;
 
-        public static OrderForm parse(final String orderForm) {
+        private static OrderForm parse(final String orderForm) {
             final String[] orderSplit = orderForm.split(ORDER_SPLIT_DELIMITER);
             validateOrderSplit(orderSplit);
 
