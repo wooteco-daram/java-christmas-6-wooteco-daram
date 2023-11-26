@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public record OrderGroup(List<Order> orders) {
-    private static final String ORDER_DELIMITER = ",";
     private static final int MAX_ORDER_SIZE = 20;
 
     public OrderGroup {
@@ -31,33 +30,35 @@ public record OrderGroup(List<Order> orders) {
     }
 
     private void validateOrderSize(final List<Order> orders) {
-        final long orderCount = orders.stream()
-                .map(Order::getCount)
-                .map(OrderCount::count)
-                .reduce(Long::sum)
-                .orElseThrow(() -> GlobalException.from(ErrorMessage.INVALID_MENU));
-
+        final long orderCount = getOrderCount(orders);
         if (orderCount > MAX_ORDER_SIZE) {
             throw GlobalException.from(ErrorMessage.INVALID_MENU);
         }
     }
 
-    private void validateOnlyDrink(final List<Order> orders) {
-        final long drinkCount = orders.stream()
-                .filter(order -> MenuBoard.DRINK.hasMenu(order.getMenu()))
-                .count();
+    private long getOrderCount(final List<Order> orders) {
+        return orders.stream()
+                .map(Order::getCount)
+                .map(OrderCount::count)
+                .reduce(Long::sum)
+                .orElseThrow(() -> GlobalException.from(ErrorMessage.INVALID_MENU));
+    }
 
+    private void validateOnlyDrink(final List<Order> orders) {
+        final long drinkCount = getDrinkCount(orders);
         if (drinkCount == orders.size()) {
             throw GlobalException.from(ErrorMessage.INVALID_MENU);
         }
     }
 
+    private long getDrinkCount(final List<Order> orders) {
+        return orders.stream()
+                .filter(order -> MenuBoard.DRINK.hasMenu(order.getMenu()))
+                .count();
+    }
+
     public static OrderGroup from(final String orderForm) {
-        final String[] orderFormSplit = orderForm.split(ORDER_DELIMITER);
-        final List<Order> orders = Arrays.stream(orderFormSplit)
-                .map(String::trim)
-                .map(Order::from)
-                .toList();
+        final List<Order> orders = OrderParser.parse(orderForm);
         return new OrderGroup(orders);
     }
 
@@ -79,5 +80,17 @@ public record OrderGroup(List<Order> orders) {
         return orders.stream()
                 .map(Order::toString)
                 .collect(Collectors.joining("\n"));
+    }
+
+    private static class OrderParser {
+        private static final String ORDER_DELIMITER = ",";
+
+        public static List<Order> parse(final String orderForm) {
+            final String[] orderFormSplit = orderForm.split(ORDER_DELIMITER);
+            return Arrays.stream(orderFormSplit)
+                    .map(String::trim)
+                    .map(Order::from)
+                    .toList();
+        }
     }
 }
