@@ -36,7 +36,7 @@ public class WeekEndDiscount extends Discount {
 
         final long countMain = MenuBoard.MAIN.countOverlap(orderGroup.getMenus());
         final long totalWeekDay = DISCOUNT_PRICE_PER_MAIN_COUNT * countMain;
-        return new DiscountPrice(new Price(totalWeekDay));
+        return DiscountPrice.from(totalWeekDay);
     }
 
     private boolean isValidWeekEnd() {

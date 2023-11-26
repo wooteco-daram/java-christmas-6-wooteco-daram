@@ -27,6 +27,6 @@ public class ChristmasDiscount extends Discount {
         }
 
         final long christmasDiscount = START_DISCOUNT + (reservationDay.reservationDay() - 1) * INCREMENT_RATE;
-        return new DiscountPrice(new Price(christmasDiscount));
+        return DiscountPrice.from(christmasDiscount);
     }
 }

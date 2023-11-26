@@ -37,7 +37,7 @@ public class WeekDayDiscount extends Discount {
 
         final long countDessert = MenuBoard.DESSERT.countOverlap(orderGroup.getMenus());
         final long totalWeekDay = DISCOUNT_PRICE_PER_DESSERT_COUNT * countDessert;
-        return new DiscountPrice(new Price(totalWeekDay));
+        return DiscountPrice.from(totalWeekDay);
     }
 
     private boolean isValidWeekDay() {

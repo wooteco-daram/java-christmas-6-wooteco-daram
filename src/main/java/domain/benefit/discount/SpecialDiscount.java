@@ -26,6 +26,6 @@ public class SpecialDiscount extends Discount {
             return DiscountPrice.empty();
         }
 
-        return new DiscountPrice(new Price(SPECIAL_DISCOUNT_PRICE));
+        return DiscountPrice.from(SPECIAL_DISCOUNT_PRICE);
     }
 }
