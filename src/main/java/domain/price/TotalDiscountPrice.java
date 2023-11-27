@@ -4,25 +4,29 @@ import java.util.List;
 import java.util.Objects;
 
 public class TotalDiscountPrice {
-    private final Price price;
+    private static final String TOTAL_DISCOUNT_PRICE_EMPTY_STRING = "없음";
+    private final DiscountPrice discountPrice;
 
     public TotalDiscountPrice(final List<DiscountPrice> discountPrices) {
-        price = discountPrices.stream()
-                .map(DiscountPrice::price)
-                .reduce(Price::add)
-                .orElse(Price.empty());
+        discountPrice = discountPrices.stream()
+                .reduce(DiscountPrice::add)
+                .orElse(DiscountPrice.empty());
+    }
+
+    public DiscountPrice getDiscountPrice() {
+        return discountPrice;
     }
 
     public Price getPrice() {
-        return price;
+        return discountPrice.price();
     }
 
     @Override
     public String toString() {
-        if (Objects.equals(price, Price.empty())) {
-            return price.toString();
+        if (Objects.equals(discountPrice, DiscountPrice.empty())) {
+            return TOTAL_DISCOUNT_PRICE_EMPTY_STRING;
         }
 
-        return "-" + price;
+        return discountPrice.toString();
     }
 }
