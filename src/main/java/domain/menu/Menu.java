@@ -11,18 +11,18 @@ import java.util.stream.Collectors;
 
 public enum Menu {
 
-    PINE_MUSHROOM_SOUP("양송이수프", new Price(6_000)),
-    TAPAS("타파스", new Price(5_500)),
-    CAESAR_SALAD("시저샐러드", new Price(8_000)),
-    T_BONE_STEAK("티본스테이크", new Price(55_000)),
-    BBQ_RIBS("바비큐립", new Price(54_000)),
-    SEAFOOD_PASTA("해산물파스타", new Price(35_000)),
-    CHRISTMAS_PASTA("크리스마스파스타", new Price(25_000)),
-    CHOCOLATE_CAKE("초코케이크", new Price(15_000)),
-    ICE_CREAM("아이스크림", new Price(5_000)),
-    ZERO_COKE("제로콜라", new Price(3_000)),
-    RED_WINE("레드와인", new Price(60_000)),
-    CHAMPAGNE("샴페인", new Price(25_000));
+    PINE_MUSHROOM_SOUP("양송이수프", Price.from(6_000)),
+    TAPAS("타파스", Price.from(5_500)),
+    CAESAR_SALAD("시저샐러드", Price.from(8_000)),
+    T_BONE_STEAK("티본스테이크", Price.from(55_000)),
+    BBQ_RIBS("바비큐립", Price.from(54_000)),
+    SEAFOOD_PASTA("해산물파스타", Price.from(35_000)),
+    CHRISTMAS_PASTA("크리스마스파스타", Price.from(25_000)),
+    CHOCOLATE_CAKE("초코케이크", Price.from(15_000)),
+    ICE_CREAM("아이스크림", Price.from(5_000)),
+    ZERO_COKE("제로콜라", Price.from(3_000)),
+    RED_WINE("레드와인", Price.from(60_000)),
+    CHAMPAGNE("샴페인", Price.from(25_000));
 
     private static final Map<String, Menu> names = Arrays.stream(values()).collect(
             Collectors.toUnmodifiableMap(
