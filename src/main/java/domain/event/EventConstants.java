@@ -18,6 +18,6 @@ public class EventConstants {
             DayOfWeek.FRIDAY,
             DayOfWeek.SATURDAY
     );
-    public static final List<Integer> SPECIAL_DAYS = List.of(3, 10, 17, 24, 25, 31);
+    public static final int CHRISTMAS_EVENT_DAY = 25;
     public static final Price MINIMUM_TOTAL_PRICE_FOR_DISCOUNT = new Price(10_000L);
 }
