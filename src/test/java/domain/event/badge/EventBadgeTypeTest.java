@@ -2,7 +2,7 @@ package domain.event.badge;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import domain.event.badge.EventBadgeType;
+import domain.price.DiscountPrice;
 import java.util.stream.Stream;
 import domain.price.Price;
 import org.junit.jupiter.api.DisplayName;
@@ -26,10 +26,10 @@ class EventBadgeTypeTest {
 
     private static Stream<Arguments> providePriceAndEventBadgeType() {
         return Stream.of(
-                Arguments.of(new Price(0), EventBadgeType.NONE),
-                Arguments.of(new Price(5_000), EventBadgeType.STAR),
-                Arguments.of(new Price(10_000), EventBadgeType.TREE),
-                Arguments.of(new Price(20_000), EventBadgeType.SANTA)
+                Arguments.of(DiscountPrice.empty(), EventBadgeType.NONE),
+                Arguments.of(DiscountPrice.from(5_000), EventBadgeType.STAR),
+                Arguments.of(DiscountPrice.from(10_000), EventBadgeType.TREE),
+                Arguments.of(DiscountPrice.from(20_000), EventBadgeType.SANTA)
         );
     }
 }
