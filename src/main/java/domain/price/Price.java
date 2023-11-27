@@ -14,6 +14,14 @@ public record Price(long price) {
         return EMPTY_PRICE;
     }
 
+    public static Price from(long price) {
+        if (price == 0) {
+            return empty();
+        }
+
+        return new Price(price);
+    }
+
     private void validateNegativePrice(final long price) {
         if (price < 0) {
             throw GlobalException.from(ErrorMessage.INVALID_PRICE);
@@ -32,8 +40,12 @@ public record Price(long price) {
         return new Price(price * count);
     }
 
-    public boolean isLessThan(final Price otherPrice) {
-        return price < otherPrice.price;
+    public boolean isLessThanEqualTo(final Price otherPrice) {
+        return price <= otherPrice.price;
+    }
+
+    public boolean isGreaterThanEqualTo(final Price otherPrice) {
+        return price >= otherPrice.price;
     }
 
     @Override

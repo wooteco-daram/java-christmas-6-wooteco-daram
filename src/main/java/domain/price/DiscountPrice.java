@@ -1,13 +1,27 @@
 package domain.price;
 
 public record DiscountPrice(Price price) {
+    private static final DiscountPrice EMPTY_DISCOUNT_PRICE = new DiscountPrice(new Price(0));
 
-    public static DiscountPrice from(long price) {
-        return new DiscountPrice(new Price(price));
+    public static DiscountPrice from(long discountPrice) {
+        if (discountPrice == 0) {
+            return DiscountPrice.empty();
+        }
+
+        return new DiscountPrice(new Price(discountPrice));
     }
 
     public static DiscountPrice empty() {
-        return new DiscountPrice(Price.empty());
+        return EMPTY_DISCOUNT_PRICE;
+    }
+
+    public DiscountPrice add(final DiscountPrice otherDiscountPrice) {
+        final Price addedPrice = price.add(otherDiscountPrice.price);
+        return new DiscountPrice(addedPrice);
+    }
+
+    public boolean isLessThanEqualTo(final DiscountPrice otherDiscountPrice) {
+        return price.isLessThanEqualTo(otherDiscountPrice.price());
     }
 
     @Override
