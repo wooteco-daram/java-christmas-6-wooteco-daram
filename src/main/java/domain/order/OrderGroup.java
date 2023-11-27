@@ -1,6 +1,5 @@
 package domain.order;
 
-import controller.OrderController;
 import domain.menu.Menu;
 import domain.menu.MenuBoard;
 import domain.price.Price;
@@ -30,17 +29,17 @@ public record OrderGroup(List<Order> orders) {
     }
 
     private void validateOrderSize(final List<Order> orders) {
-        final long orderCount = getOrderCount(orders);
-        if (orderCount > MAX_ORDER_SIZE) {
+        final long totalOrderSize = getTotalOrderSize(orders);
+        if (totalOrderSize > MAX_ORDER_SIZE) {
             throw GlobalException.from(ErrorMessage.INVALID_MENU);
         }
     }
 
-    private long getOrderCount(final List<Order> orders) {
+    private long getTotalOrderSize(final List<Order> orders) {
         return orders.stream()
                 .map(Order::getCount)
+                .reduce(OrderCount::add)
                 .map(OrderCount::count)
-                .reduce(Long::sum)
                 .orElseThrow(() -> GlobalException.from(ErrorMessage.INVALID_MENU));
     }
 
@@ -53,7 +52,8 @@ public record OrderGroup(List<Order> orders) {
 
     private long getDrinkCount(final List<Order> orders) {
         return orders.stream()
-                .filter(order -> MenuBoard.DRINK.hasMenu(order.getMenu()))
+                .map(Order::getMenu)
+                .filter(MenuBoard.DRINK::hasMenu)
                 .count();
     }
 

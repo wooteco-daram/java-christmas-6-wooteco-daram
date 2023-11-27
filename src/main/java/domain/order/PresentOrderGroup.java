@@ -16,9 +16,7 @@ public class PresentOrderGroup {
     public DiscountPrice getTotalDiscountPrice() {
         return presentMenus.stream()
                 .map(PresentOrder::getDiscountPrice)
-                .map(DiscountPrice::price)
-                .reduce(Price::add)
-                .map(DiscountPrice::new)
+                .reduce(DiscountPrice::add)
                 .orElse(DiscountPrice.empty());
     }
 
