@@ -13,12 +13,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 class EventBadgeTypeTest {
 
     @DisplayName("특정 금액 이상일 시 이벤트 배지를 부여합니다.")
-    @ParameterizedTest(name = "{0}원 이상일 시 {1} 배지를 부여합니다.")
+    @ParameterizedTest(name = "{0} 이상일 시 {1} 배지를 부여합니다.")
     @MethodSource("providePriceAndEventBadgeType")
-    void Should_Badge_When_Price_Is_Greater_Than_Or_Equal_To_Price(final Price price, final EventBadgeType expected) {
+    void Should_Badge_When_Price_Is_Greater_Than_Or_Equal_To_Price(
+            final DiscountPrice discountPrice,
+            final EventBadgeType expected
+    ) {
         //given
         //when
-        final EventBadgeType actual = EventBadgeType.findByPrice(price);
+        final EventBadgeType actual = EventBadgeType.findByDiscountPrice(discountPrice);
 
         //then
         assertThat(actual).isEqualTo(expected);
