@@ -1,8 +1,10 @@
 package domain.price;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TotalPrice {
+    private static final String TOTAL_PRICE_EMPTY_STRING = "없음";
 
     private final Price price;
 
@@ -13,11 +15,15 @@ public class TotalPrice {
     }
 
     public Price getPrice() {
-        return new Price(price.price());
+        return price;
     }
 
     @Override
     public String toString() {
+        if (Objects.equals(price, Price.empty())) {
+            return TOTAL_PRICE_EMPTY_STRING;
+        }
+
         return price.toString();
     }
 }
