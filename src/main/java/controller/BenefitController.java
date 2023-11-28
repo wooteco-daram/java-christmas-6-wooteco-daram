@@ -61,7 +61,7 @@ public class BenefitController extends Controller {
                 new WeekDayDiscount(reservationDay, orderGroup),
                 new WeekEndDiscount(reservationDay, orderGroup),
                 new SpecialDiscount(reservationDay),
-                new PresentDiscount(presentOrderGroup.getTotalDiscountPrice())
+                new PresentDiscount(presentOrderGroup)
         ), totalPrice);
         benefitOutputView.printBenefitGroup(benefitGroup);
         benefitOutputView.printNewLine();
