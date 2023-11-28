@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+@DisplayName("특별 할인 테스트")
 class SpecialDiscountTest {
     @DisplayName("별이 적힌 날엔 1000원이 할인된다. 그 외엔 할인되지 않는다.")
     @ParameterizedTest
