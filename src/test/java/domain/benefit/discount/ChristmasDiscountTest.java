@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+@DisplayName("크리스마스 디데이 할인 테스트")
 class ChristmasDiscountTest {
     @Test
     @DisplayName("크리스마스 디데이 할인 이름을 조회합니다.")
