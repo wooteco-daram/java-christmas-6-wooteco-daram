@@ -2,6 +2,7 @@ package domain.order;
 
 import domain.price.DiscountPrice;
 import domain.price.Price;
+import domain.price.TotalDiscountPrice;
 import domain.price.TotalPrice;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,11 +14,12 @@ public class PresentOrderGroup {
         presentMenus = PresentOrder.getAvailablePresentMenus(totalPrice.getPrice());
     }
 
-    public DiscountPrice getTotalDiscountPrice() {
-        return presentMenus.stream()
+    public TotalDiscountPrice getTotalDiscountPrice() {
+        final List<DiscountPrice> discountPrices = presentMenus.stream()
                 .map(PresentOrder::getDiscountPrice)
-                .reduce(DiscountPrice::add)
-                .orElse(DiscountPrice.empty());
+                .toList();
+
+        return new TotalDiscountPrice(discountPrices);
     }
 
     @Override
