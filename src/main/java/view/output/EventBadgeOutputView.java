@@ -2,7 +2,6 @@ package view.output;
 
 import domain.event.EventConstants;
 import domain.event.badge.EventBadgeType;
-import domain.price.TotalDiscountPrice;
 import view.output.writer.Writer;
 
 public class EventBadgeOutputView extends OutputView {

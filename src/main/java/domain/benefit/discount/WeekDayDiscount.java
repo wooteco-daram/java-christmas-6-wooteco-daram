@@ -4,7 +4,6 @@ import domain.event.EventConstants;
 import domain.menu.MenuBoard;
 import domain.order.OrderGroup;
 import domain.price.DiscountPrice;
-import domain.price.Price;
 import domain.reservation.ReservationDay;
 import java.time.DayOfWeek;
 import java.time.LocalDate;

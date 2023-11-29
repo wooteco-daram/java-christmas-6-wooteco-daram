@@ -1,7 +1,6 @@
 package domain.benefit.discount;
 
 import domain.price.DiscountPrice;
-import domain.price.Price;
 import domain.reservation.ReservationDay;
 
 public class ChristmasDiscount extends Discount {
