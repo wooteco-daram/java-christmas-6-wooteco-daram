@@ -20,4 +20,8 @@ public class EventConstants {
     );
     public static final int CHRISTMAS_EVENT_DAY = 25;
     public static final Price MINIMUM_TOTAL_PRICE_FOR_DISCOUNT = new Price(10_000L);
+
+    private EventConstants() {
+        // No instances
+    }
 }
