@@ -1,11 +1,7 @@
 package view.output;
 
 import domain.benefit.BenefitGroup;
-import domain.benefit.discount.Discount;
-import domain.order.PresentOrderGroup;
-import domain.price.DiscountPrice;
 import domain.price.TotalDiscountPrice;
-import java.util.List;
 import view.output.writer.Writer;
 
 public class BenefitOutputView extends OutputView {

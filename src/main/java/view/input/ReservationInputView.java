@@ -3,7 +3,6 @@ package view.input;
 import domain.reservation.ReservationDay;
 import exception.ErrorMessage;
 import exception.GlobalException;
-import util.DateUtil;
 import util.exception.ExceptionHandler;
 import view.input.reader.Reader;
 
