@@ -7,7 +7,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class SpecialDiscount extends Discount {
-    private static final String SPECIAL_DISCOUNT_NAME = "증정 이벤트";
+    private static final String SPECIAL_DISCOUNT_NAME = "특별 할인";
     private static final long SPECIAL_DISCOUNT_PRICE = 1_000L;
     private final ReservationDay reservationDay;
 
