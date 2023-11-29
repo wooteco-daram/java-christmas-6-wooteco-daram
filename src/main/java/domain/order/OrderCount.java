@@ -16,12 +16,22 @@ public record OrderCount(long count) {
         }
     }
 
+    public OrderCount add(final OrderCount otherOrderCount) {
+        return new OrderCount(count + otherOrderCount.count);
+    }
+
     public static OrderCount from(final String countForm) {
-        try {
-            final int count = Integer.parseInt(countForm);
-            return new OrderCount(count);
-        } catch (NumberFormatException exception) {
-            throw GlobalException.from(ErrorMessage.INVALID_MENU);
+        final int count = OrderCountParser.parse(countForm);
+        return new OrderCount(count);
+    }
+
+    private static class OrderCountParser {
+        private static int parse(final String countForm) {
+            try {
+                return Integer.parseInt(countForm);
+            } catch (NumberFormatException exception) {
+                throw GlobalException.from(ErrorMessage.INVALID_MENU);
+            }
         }
     }
 }

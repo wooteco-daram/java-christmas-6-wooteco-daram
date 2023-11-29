@@ -1,8 +1,8 @@
 package domain.event.badge;
 
+import domain.price.DiscountPrice;
 import java.util.Arrays;
 import java.util.function.Predicate;
-import domain.price.Price;
 
 public enum EventBadgeType {
     NONE("없음", EventBadgePriceMinimumCriteria.NONE::isSatisfied),
@@ -11,24 +11,24 @@ public enum EventBadgeType {
     SANTA("산타", EventBadgePriceMinimumCriteria.SANTA::isSatisfied);
 
     private final String name;
-    private final Predicate<Price> pricePredicate;
+    private final Predicate<DiscountPrice> pricePredicate;
 
     EventBadgeType(
             final String name,
-            final Predicate<Price> pricePredicate
+            final Predicate<DiscountPrice> pricePredicate
     ) {
         this.name = name;
         this.pricePredicate = pricePredicate;
     }
 
-    public boolean test(final Price price) {
-        return pricePredicate.test(price);
+    public boolean test(final DiscountPrice discountPrice) {
+        return pricePredicate.test(discountPrice);
     }
 
-    public static EventBadgeType findByPrice(final Price price) {
+    public static EventBadgeType findByDiscountPrice(final DiscountPrice discountPrice) {
         return Arrays.stream(values())
-                .filter(eventBadgeType -> eventBadgeType.test(price))
-                .reduce((first, second) -> second)
+                .filter(eventBadgeType -> eventBadgeType.test(discountPrice))
+                .reduce((unused, eventBadgeType) -> eventBadgeType)
                 .orElse(EventBadgeType.NONE);
     }
 

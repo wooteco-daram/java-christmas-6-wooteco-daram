@@ -4,7 +4,6 @@ import domain.event.EventConstants;
 import domain.menu.MenuBoard;
 import domain.order.OrderGroup;
 import domain.price.DiscountPrice;
-import domain.price.Price;
 import domain.reservation.ReservationDay;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -36,7 +35,7 @@ public class WeekEndDiscount extends Discount {
 
         final long countMain = MenuBoard.MAIN.countOverlap(orderGroup.getMenus());
         final long totalWeekDay = DISCOUNT_PRICE_PER_MAIN_COUNT * countMain;
-        return new DiscountPrice(new Price(totalWeekDay));
+        return DiscountPrice.from(totalWeekDay);
     }
 
     private boolean isValidWeekEnd() {

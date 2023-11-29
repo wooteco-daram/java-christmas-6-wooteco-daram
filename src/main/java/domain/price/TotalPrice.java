@@ -1,23 +1,29 @@
 package domain.price;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TotalPrice {
+    private static final String TOTAL_PRICE_EMPTY_STRING = "없음";
 
-    private final Price totalPrice;
+    private final Price price;
 
     public TotalPrice(final List<Price> prices) {
-        totalPrice = prices.stream()
+        price = prices.stream()
                 .reduce(Price::add)
-                .orElse(new Price(0));
+                .orElse(Price.empty());
     }
 
-    public Price getTotalPrice() {
-        return new Price(totalPrice.price());
+    public Price getPrice() {
+        return price;
     }
 
     @Override
     public String toString() {
-        return totalPrice.toString();
+        if (Objects.equals(price, Price.empty())) {
+            return TOTAL_PRICE_EMPTY_STRING;
+        }
+
+        return price.toString();
     }
 }

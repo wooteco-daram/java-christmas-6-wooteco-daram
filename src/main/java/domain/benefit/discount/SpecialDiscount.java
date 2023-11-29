@@ -2,8 +2,9 @@ package domain.benefit.discount;
 
 import domain.event.EventConstants;
 import domain.price.DiscountPrice;
-import domain.price.Price;
 import domain.reservation.ReservationDay;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class SpecialDiscount extends Discount {
     private static final String SPECIAL_DISCOUNT_NAME = "증정 이벤트";
@@ -22,10 +23,25 @@ public class SpecialDiscount extends Discount {
     @Override
     public DiscountPrice getDiscountPrice() {
         final int day = reservationDay.reservationDay();
-        if (!EventConstants.SPECIAL_DAYS.contains(day)) {
+
+        if (!isValidSunday(day) && !isValidChristmasDay(day)) {
             return DiscountPrice.empty();
         }
 
-        return new DiscountPrice(new Price(SPECIAL_DISCOUNT_PRICE));
+        return DiscountPrice.from(SPECIAL_DISCOUNT_PRICE);
+    }
+
+    private boolean isValidSunday(final int day) {
+        final LocalDate targetDate = LocalDate.of(
+                EventConstants.EVENT_YEAR,
+                EventConstants.EVENT_MONTH,
+                day
+        );
+        final DayOfWeek dayOfWeek = targetDate.getDayOfWeek();
+        return dayOfWeek == DayOfWeek.SUNDAY;
+    }
+
+    private boolean isValidChristmasDay(final int day) {
+        return day == EventConstants.CHRISTMAS_EVENT_DAY;
     }
 }

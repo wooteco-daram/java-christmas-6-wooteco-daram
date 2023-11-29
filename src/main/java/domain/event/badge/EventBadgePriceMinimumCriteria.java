@@ -1,24 +1,20 @@
 package domain.event.badge;
 
-import domain.price.Price;
+import domain.price.DiscountPrice;
 
 public enum EventBadgePriceMinimumCriteria {
-    NONE(new Price(0)),
-    STAR(new Price(5_000)),
-    TREE(new Price(10_000)),
-    SANTA(new Price(20_000));
+    NONE(DiscountPrice.empty()),
+    STAR(DiscountPrice.from(5_000)),
+    TREE(DiscountPrice.from(10_000)),
+    SANTA(DiscountPrice.from(20_000));
 
-    private final Price price;
+    private final DiscountPrice discountPrice;
 
-    EventBadgePriceMinimumCriteria(final Price price) {
-        this.price = price;
+    EventBadgePriceMinimumCriteria(final DiscountPrice discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
-    public Price getPrice() {
-        return price;
-    }
-
-    public boolean isSatisfied(final Price otherPrice) {
-        return otherPrice.price() >= price.price();
+    public boolean isSatisfied(final DiscountPrice otherDiscountPrice) {
+        return discountPrice.isLessThanEqualTo(otherDiscountPrice);
     }
 }

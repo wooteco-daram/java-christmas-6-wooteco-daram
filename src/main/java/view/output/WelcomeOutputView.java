@@ -13,5 +13,4 @@ public class WelcomeOutputView extends OutputView {
     public void printWelcomeMessage() {
         writer.println(WELCOME_MESSAGE_FORMAT.formatted(EventConstants.EVENT_MONTH));
     }
-
 }

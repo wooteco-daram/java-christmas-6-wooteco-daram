@@ -6,10 +6,8 @@ import domain.benefit.discount.PresentDiscount;
 import domain.benefit.discount.SpecialDiscount;
 import domain.benefit.discount.WeekDayDiscount;
 import domain.benefit.discount.WeekEndDiscount;
-import domain.event.EventConstants;
 import domain.order.OrderGroup;
 import domain.order.PresentOrderGroup;
-import domain.price.Price;
 import domain.price.TotalDiscountPrice;
 import domain.price.TotalPrice;
 import domain.reservation.ReservationDay;
@@ -63,7 +61,7 @@ public class BenefitController extends Controller {
                 new WeekDayDiscount(reservationDay, orderGroup),
                 new WeekEndDiscount(reservationDay, orderGroup),
                 new SpecialDiscount(reservationDay),
-                new PresentDiscount(presentOrderGroup.getTotalDiscountPrice())
+                new PresentDiscount(presentOrderGroup)
         ), totalPrice);
         benefitOutputView.printBenefitGroup(benefitGroup);
         benefitOutputView.printNewLine();

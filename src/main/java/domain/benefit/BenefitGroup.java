@@ -2,7 +2,6 @@ package domain.benefit;
 
 import domain.benefit.discount.Discount;
 import domain.price.DiscountPrice;
-import domain.price.Price;
 import domain.price.TotalDiscountPrice;
 import domain.price.TotalPrice;
 import java.util.List;

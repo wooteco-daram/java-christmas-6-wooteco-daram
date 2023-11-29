@@ -1,19 +1,22 @@
 package domain.benefit.discount;
 
+import domain.order.PresentOrderGroup;
 import domain.price.DiscountPrice;
+import domain.price.TotalDiscountPrice;
 
 public class PresentDiscount extends Discount {
     private static final String CHRISTMAS_DISCOUNT_NAME = "증정 이벤트";
 
-    private final DiscountPrice totalDiscountPrice;
+    private final PresentOrderGroup presentOrderGroup;
 
-    public PresentDiscount(final DiscountPrice totalDiscountPrice) {
-        this.totalDiscountPrice = totalDiscountPrice;
+    public PresentDiscount(final PresentOrderGroup presentOrderGroup) {
+        this.presentOrderGroup = presentOrderGroup;
     }
 
     @Override
     public DiscountPrice getDiscountPrice() {
-        return totalDiscountPrice;
+        final TotalDiscountPrice totalDiscountPrice = presentOrderGroup.getTotalDiscountPrice();
+        return totalDiscountPrice.getDiscountPrice();
     }
 
     @Override

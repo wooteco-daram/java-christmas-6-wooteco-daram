@@ -1,7 +1,6 @@
 package domain.benefit.discount;
 
 import domain.price.DiscountPrice;
-import domain.price.Price;
 import domain.reservation.ReservationDay;
 
 public class ChristmasDiscount extends Discount {
@@ -27,6 +26,6 @@ public class ChristmasDiscount extends Discount {
         }
 
         final long christmasDiscount = START_DISCOUNT + (reservationDay.reservationDay() - 1) * INCREMENT_RATE;
-        return new DiscountPrice(new Price(christmasDiscount));
+        return DiscountPrice.from(christmasDiscount);
     }
 }

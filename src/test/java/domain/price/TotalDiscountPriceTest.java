@@ -22,7 +22,7 @@ class TotalDiscountPriceTest {
 
         //when
         final TotalDiscountPrice totalDiscountPrice = new TotalDiscountPrice(discountPrices);
-        final Price actual = totalDiscountPrice.getTotalDiscountPrice();
+        final Price actual = totalDiscountPrice.getPrice();
 
         //then
         assertThat(actual).isEqualTo(expected);
