@@ -1,13 +1,12 @@
 package domain.benefit.discount;
 
-import domain.event.EventConstants;
 import domain.price.DiscountPrice;
 import domain.price.Price;
 import domain.price.TotalPrice;
 
 public abstract class Discount {
     public boolean isValidDiscount(final TotalPrice totalPrice) {
-        if (!shouldDiscount(totalPrice)) {
+        if (!shouldOverMinimumTotalPrice(totalPrice)) {
             return false;
         }
 
@@ -15,7 +14,7 @@ public abstract class Discount {
         return discountPrice.price() > 0;
     }
 
-    private boolean shouldDiscount(final TotalPrice totalPrice) {
+    private boolean shouldOverMinimumTotalPrice(final TotalPrice totalPrice) {
         final Price price = totalPrice.getPrice();
         return price.isGreaterThanEqualTo(DiscountConstants.MINIMUM_TOTAL_PRICE_FOR_DISCOUNT);
     }
