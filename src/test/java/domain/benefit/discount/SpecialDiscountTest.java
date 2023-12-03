@@ -18,7 +18,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 @DisplayName("특별 할인 테스트")
 class SpecialDiscountTest {
     @Test
-    @DisplayName("특별 할인 이벤트 이름을 조회합니다.")
+    @DisplayName("특별 할인 이벤트 이름을 출력합니다.")
     void Should_SPECIAL_DISCOUNT_NAME_When_Get_Discount_Name() {
         //given
         final ReservationDay reservationDay = new ReservationDay(3);
