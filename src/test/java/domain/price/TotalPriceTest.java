@@ -13,12 +13,12 @@ class TotalPriceTest {
     void Should_Add_All_Prices_When_Prices_Given() {
         //given
         final List<Price> prices = List.of(
-                new Price(1_000),
-                new Price(10_000),
-                new Price(20_000)
+                Price.from(1_000L),
+                Price.from(10_000L),
+                Price.from(20_000L)
         );
 
-        final Price expected = new Price(31_000);
+        final Price expected = Price.from(31_000L);
 
         //when
         final TotalPrice totalPrice = new TotalPrice(prices);
@@ -32,7 +32,9 @@ class TotalPriceTest {
     @DisplayName("총 금액이 0원일 때 '없음'을 표시합니다.")
     void Should_None_String_When_All_Prices_Are_Zero() {
         //given
-        final TotalPrice totalPrice = new TotalPrice(List.of(new Price(0)));
+        final TotalPrice totalPrice = new TotalPrice(
+                List.of(Price.empty())
+        );
         final String expected = "없음";
 
         //when
@@ -47,9 +49,9 @@ class TotalPriceTest {
     void Should_Total_Price_String_When_toString() {
         //given
         final List<Price> prices = List.of(
-                new Price(1_000),
-                new Price(10_000),
-                new Price(20_000)
+                Price.from(1_000L),
+                Price.from(10_000L),
+                Price.from(20_000L)
         );
 
         final String expected = "31,000원";

@@ -5,6 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("주문 테스트")
 class OrderTest {
     @Test
     @DisplayName("메뉴와 수량을 문자열로 받아 생성합니다.")

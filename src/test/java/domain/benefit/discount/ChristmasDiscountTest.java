@@ -49,7 +49,7 @@ class ChristmasDiscountTest {
     void Should_Increment_Price_When_Before_Christmas_Day(final int day, final long expectedPrice) {
         //given
         final ReservationDay reservationDay = new ReservationDay(day);
-        final DiscountPrice expected = new DiscountPrice(new Price(expectedPrice));
+        final DiscountPrice expected = DiscountPrice.from(expectedPrice);
 
         //when
         final ChristmasDiscount christmasDiscount = new ChristmasDiscount(reservationDay);
