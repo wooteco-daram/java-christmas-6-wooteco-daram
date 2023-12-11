@@ -57,8 +57,8 @@ public record OrderGroup(List<Order> orders) {
                 .count();
     }
 
-    public static OrderGroup from(final String orderForm) {
-        final List<Order> orders = OrderParser.parse(orderForm);
+    public static OrderGroup from(final String orderGroupFrom) {
+        final List<Order> orders = OrderParser.parse(orderGroupFrom);
         return new OrderGroup(orders);
     }
 
