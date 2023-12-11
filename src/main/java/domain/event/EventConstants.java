@@ -1,6 +1,5 @@
 package domain.event;
 
-import domain.price.Price;
 import java.time.DayOfWeek;
 import java.util.List;
 
