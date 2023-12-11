@@ -26,6 +26,10 @@ public record DiscountPrice(Price price) {
         return price.isLessThanEqualTo(otherDiscountPrice.price());
     }
 
+    public boolean isGreaterThan(final DiscountPrice otherDiscountPrice) {
+        return price.isGreaterThan(otherDiscountPrice.price());
+    }
+
     @Override
     public String toString() {
         return "-" + price;

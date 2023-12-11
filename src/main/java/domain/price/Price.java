@@ -48,6 +48,10 @@ public record Price(long price) {
         return price >= otherPrice.price;
     }
 
+    public boolean isGreaterThan(final Price otherPrice) {
+        return price >= otherPrice.price;
+    }
+
     @Override
     public String toString() {
         return String.format("%,d원", price);
