@@ -10,8 +10,8 @@ import java.util.function.Predicate;
 public enum PresentOrder {
     CHAMPAGNE(
             Menu.CHAMPAGNE,
-            new OrderCount(1),
-            price -> price.price() >= 120_000
+            OrderCount.from(1L),
+            price -> price.price() >= 120_000L
     );
 
     private final Menu menu;

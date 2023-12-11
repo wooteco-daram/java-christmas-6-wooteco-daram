@@ -28,7 +28,7 @@ class WeekEndDiscountTest {
         //given
         final int day = 1;
         final ReservationDay reservationDay = new ReservationDay(day);
-        final OrderGroup orderGroup = new OrderGroup(List.of(new Order(Menu.CHOCOLATE_CAKE, new OrderCount(1))));
+        final OrderGroup orderGroup = new OrderGroup(List.of(new Order(Menu.CHOCOLATE_CAKE, OrderCount.from(1L))));
         final String expected = "주말 할인";
 
         //when
@@ -46,7 +46,7 @@ class WeekEndDiscountTest {
         //given
         final int day = localDate.getDayOfMonth();
         final ReservationDay reservationDay = new ReservationDay(day);
-        final OrderGroup orderGroup = new OrderGroup(List.of(new Order(Menu.T_BONE_STEAK, new OrderCount(1))));
+        final OrderGroup orderGroup = new OrderGroup(List.of(new Order(Menu.T_BONE_STEAK, OrderCount.from(1L))));
         final DiscountPrice expected = DiscountPrice.from(2_023L);
 
         //when
@@ -76,7 +76,7 @@ class WeekEndDiscountTest {
         final LocalDate weekday = DiscountDateUtil.getFirstWeekday();
         final int day = weekday.getDayOfMonth();
         final ReservationDay reservationDay = new ReservationDay(day);
-        final OrderGroup orderGroup = new OrderGroup(List.of(new Order(Menu.T_BONE_STEAK, new OrderCount(1))));
+        final OrderGroup orderGroup = new OrderGroup(List.of(new Order(Menu.T_BONE_STEAK, OrderCount.from(1L))));
         final DiscountPrice expected = DiscountPrice.empty();
 
         //when
@@ -95,8 +95,8 @@ class WeekEndDiscountTest {
         final int day = weekday.getDayOfMonth();
         final ReservationDay reservationDay = new ReservationDay(day);
         final List<Order> orders = List.of(
-                new Order(Menu.T_BONE_STEAK, new OrderCount(1)),
-                new Order(Menu.BBQ_RIBS, new OrderCount(1))
+                new Order(Menu.T_BONE_STEAK, OrderCount.from(1L)),
+                new Order(Menu.BBQ_RIBS, OrderCount.from(1L))
         );
         final OrderGroup orderGroup = new OrderGroup(orders);
         final DiscountPrice expected = DiscountPrice.from(2_023L * orders.size());
