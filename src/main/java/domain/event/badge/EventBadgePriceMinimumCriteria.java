@@ -17,4 +17,8 @@ public enum EventBadgePriceMinimumCriteria {
     public boolean isSatisfied(final DiscountPrice otherDiscountPrice) {
         return discountPrice.isLessThanEqualTo(otherDiscountPrice);
     }
+
+    public DiscountPrice getDiscountPrice() {
+        return discountPrice;
+    }
 }

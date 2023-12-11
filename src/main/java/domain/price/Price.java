@@ -29,15 +29,15 @@ public record Price(long price) {
     }
 
     public Price add(final Price otherPrice) {
-        return new Price(price + otherPrice.price);
+        return Price.from(price + otherPrice.price);
     }
 
     public Price subtract(final Price otherPrice) {
-        return new Price(price - otherPrice.price);
+        return Price.from(price - otherPrice.price);
     }
 
     public Price multiply(final long count) {
-        return new Price(price * count);
+        return Price.from(price * count);
     }
 
     public boolean isLessThanEqualTo(final Price otherPrice) {
@@ -45,6 +45,10 @@ public record Price(long price) {
     }
 
     public boolean isGreaterThanEqualTo(final Price otherPrice) {
+        return price >= otherPrice.price;
+    }
+
+    public boolean isGreaterThan(final Price otherPrice) {
         return price >= otherPrice.price;
     }
 

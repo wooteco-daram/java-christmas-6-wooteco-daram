@@ -1,6 +1,5 @@
 package domain.event;
 
-import domain.price.Price;
 import java.time.DayOfWeek;
 import java.util.List;
 
@@ -19,7 +18,6 @@ public class EventConstants {
             DayOfWeek.SATURDAY
     );
     public static final int CHRISTMAS_EVENT_DAY = 25;
-    public static final Price MINIMUM_TOTAL_PRICE_FOR_DISCOUNT = new Price(10_000L);
 
     private EventConstants() {
         // No instances

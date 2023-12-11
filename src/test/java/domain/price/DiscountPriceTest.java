@@ -13,8 +13,7 @@ class DiscountPriceTest {
     @DisplayName("할인 금액을 표시할 때 맨 앞에 '-' 글자를 표시한다.")
     void Should_Minus_Prefix_When_toString(final long price, final String expected) {
         //given
-        final Price newPrice = new Price(price);
-        final DiscountPrice discountPrice = new DiscountPrice(newPrice);
+        final DiscountPrice discountPrice = DiscountPrice.from(price);
 
         //when
         final String actual = discountPrice.toString();

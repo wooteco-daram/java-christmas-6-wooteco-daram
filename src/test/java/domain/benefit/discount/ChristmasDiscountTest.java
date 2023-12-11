@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayName("크리스마스 디데이 할인 테스트")
 class ChristmasDiscountTest {
     @Test
-    @DisplayName("크리스마스 디데이 할인 이름을 조회합니다.")
+    @DisplayName("크리스마스 디데이 할인 이름을 출력합니다.")
     void Should_CHRISTMAS_DISCOUNT_NAME_When_Get_Discount_Name() {
         //given
         final ReservationDay reservationDay = new ReservationDay(1);
@@ -49,7 +49,7 @@ class ChristmasDiscountTest {
     void Should_Increment_Price_When_Before_Christmas_Day(final int day, final long expectedPrice) {
         //given
         final ReservationDay reservationDay = new ReservationDay(day);
-        final DiscountPrice expected = new DiscountPrice(new Price(expectedPrice));
+        final DiscountPrice expected = DiscountPrice.from(expectedPrice);
 
         //when
         final ChristmasDiscount christmasDiscount = new ChristmasDiscount(reservationDay);

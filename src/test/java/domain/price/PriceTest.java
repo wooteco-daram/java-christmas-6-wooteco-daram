@@ -15,7 +15,7 @@ class PriceTest {
     @DisplayName("가격이 음수이면 IllegalArgumentException 예외를 발생한다.")
     void Should_IllegalArgumentExceptionThrown_When_Price_Is_Negative() {
         //when, then
-        assertThatThrownBy(() -> new Price(-1))
+        assertThatThrownBy(() -> Price.from(-1L))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("가격은 음수가 될 수 없습니다.");
     }
@@ -24,7 +24,7 @@ class PriceTest {
     @DisplayName("0원인 가격을 반환한다.")
     void Should_Zero_Price_When_Empty() {
         //given
-        final Price expected = new Price(0);
+        final Price expected = Price.empty();
 
         //when
         final Price actual = Price.empty();
@@ -37,10 +37,10 @@ class PriceTest {
     @DisplayName("두 개의 가격을 더한다.")
     void Should_Add_Price_When_Two_Price_Add() {
         //given
-        final Price oneHundredPrice = new Price(100);
-        final Price twoHundredPrice = new Price(200);
+        final Price oneHundredPrice = Price.from(100L);
+        final Price twoHundredPrice = Price.from(200L);
 
-        final Price expected = new Price(300);
+        final Price expected = Price.from(300L);
 
         //when
         final Price actual = oneHundredPrice.add(twoHundredPrice);
@@ -53,10 +53,10 @@ class PriceTest {
     @DisplayName("두 개의 가격을 뺀다.")
     void Should_Subtract_Price_When_Two_Price_Subtract() {
         //given
-        final Price oneThousandPrice = new Price(1000);
-        final Price fiveHundredPrice = new Price(500);
+        final Price oneThousandPrice = Price.from(1_000L);
+        final Price fiveHundredPrice = Price.from(500L);
 
-        final Price expected = new Price(500);
+        final Price expected = Price.from(500L);
 
         //when
         final Price actual = oneThousandPrice.subtract(fiveHundredPrice);
@@ -69,10 +69,10 @@ class PriceTest {
     @DisplayName("가격을 수량만큼 곱한다.")
     void Should_Multiply_Price_When_Count_Is_Given() {
         //given
-        final Price oneThousandPrice = new Price(1000);
+        final Price oneThousandPrice = Price.from(1_000L);
         final long count = 3;
 
-        final Price expected = new Price(3000);
+        final Price expected = Price.from(3_000L);
 
         //when
         final Price actual = oneThousandPrice.multiply(count);
@@ -86,7 +86,7 @@ class PriceTest {
     @DisplayName("가격 표시할 때 세 자릿수 단위로 콤마를 찍고 뒤에 원을 붙인다.")
     void Should_Three_Digit_Comma_And_Won_Postfix_When_toString(final long price, final String expected) {
         //given
-        final Price newPrice = new Price(price);
+        final Price newPrice = Price.from(price);
 
         //when
         final String actual = newPrice.toString();

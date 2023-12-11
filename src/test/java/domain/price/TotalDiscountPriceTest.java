@@ -13,12 +13,12 @@ class TotalDiscountPriceTest {
     void Should_Add_All_Discount_Prices_When_Discount_Prices_Given() {
         //given
         final List<DiscountPrice> discountPrices = List.of(
-                new DiscountPrice(new Price(1_000)),
-                new DiscountPrice(new Price(10_000)),
-                new DiscountPrice(new Price(20_000))
+                DiscountPrice.from(1_000L),
+                DiscountPrice.from(10_000L),
+                DiscountPrice.from(20_000L)
         );
 
-        final Price expected = new Price(31_000);
+        final Price expected = Price.from(31_000L);
 
         //when
         final TotalDiscountPrice totalDiscountPrice = new TotalDiscountPrice(discountPrices);
@@ -33,9 +33,7 @@ class TotalDiscountPriceTest {
     void Should_None_String_When_All_Discount_Prices_Are_Zero() {
         //given
         final TotalDiscountPrice totalDiscountPrice = new TotalDiscountPrice(
-                List.of(
-                        new DiscountPrice(new Price(0))
-                )
+                List.of(DiscountPrice.empty())
         );
         final String expected = "없음";
 
@@ -51,9 +49,9 @@ class TotalDiscountPriceTest {
     void Should_Total_Discount_Price_String_When_toString() {
         //given
         final List<DiscountPrice> discountPrices = List.of(
-                new DiscountPrice(new Price(1_000)),
-                new DiscountPrice(new Price(10_000)),
-                new DiscountPrice(new Price(20_000))
+                DiscountPrice.from(1_000L),
+                DiscountPrice.from(10_000L),
+                DiscountPrice.from(20_000L)
         );
 
         final String expected = "-31,000원";

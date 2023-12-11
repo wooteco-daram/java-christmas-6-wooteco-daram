@@ -15,7 +15,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 @DisplayName("증정 할인 테스트")
 class PresentDiscountTest {
     @Test
-    @DisplayName("증정 이벤트 이름을 조회합니다.")
+    @DisplayName("증정 이벤트 이름을 출력합니다.")
     void Should_PRESENT_DISCOUNT_NAME_When_Get_Discount_Name() {
         //given
         final TotalPrice totalPrice = new TotalPrice(List.of(

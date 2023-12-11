@@ -20,6 +20,10 @@ public record OrderCount(long count) {
         return new OrderCount(count + otherOrderCount.count);
     }
 
+    public static OrderCount from(final long count) {
+        return new OrderCount(count);
+    }
+
     public static OrderCount from(final String countForm) {
         final int count = OrderCountParser.parse(countForm);
         return new OrderCount(count);

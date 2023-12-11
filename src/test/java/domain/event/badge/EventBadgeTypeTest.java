@@ -10,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+@DisplayName("이벤트 배지 테스트")
 class EventBadgeTypeTest {
 
     @DisplayName("특정 금액 이상일 시 이벤트 배지를 부여합니다.")

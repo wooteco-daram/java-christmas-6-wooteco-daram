@@ -1,34 +1,40 @@
 package domain.event.badge;
 
 import domain.price.DiscountPrice;
+import domain.price.Price;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 public enum EventBadgeType {
-    NONE("없음", EventBadgePriceMinimumCriteria.NONE::isSatisfied),
-    STAR("별", EventBadgePriceMinimumCriteria.STAR::isSatisfied),
-    TREE("트리", EventBadgePriceMinimumCriteria.TREE::isSatisfied),
-    SANTA("산타", EventBadgePriceMinimumCriteria.SANTA::isSatisfied);
+    NONE("없음", EventBadgePriceMinimumCriteria.NONE),
+    STAR("별", EventBadgePriceMinimumCriteria.STAR),
+    TREE("트리", EventBadgePriceMinimumCriteria.TREE),
+    SANTA("산타", EventBadgePriceMinimumCriteria.SANTA);
 
     private final String name;
-    private final Predicate<DiscountPrice> pricePredicate;
+    private final EventBadgePriceMinimumCriteria criteria;
 
     EventBadgeType(
             final String name,
-            final Predicate<DiscountPrice> pricePredicate
+            final EventBadgePriceMinimumCriteria criteria
     ) {
         this.name = name;
-        this.pricePredicate = pricePredicate;
+        this.criteria = criteria;
     }
 
-    public boolean test(final DiscountPrice discountPrice) {
-        return pricePredicate.test(discountPrice);
+    public boolean isSatisfied(final DiscountPrice discountPrice) {
+        return criteria.isSatisfied(discountPrice);
     }
 
     public static EventBadgeType findByDiscountPrice(final DiscountPrice discountPrice) {
         return Arrays.stream(values())
-                .filter(eventBadgeType -> eventBadgeType.test(discountPrice))
-                .reduce((unused, eventBadgeType) -> eventBadgeType)
+                .filter(eventBadgeType -> eventBadgeType.isSatisfied(discountPrice))
+                .max(Comparator.comparingLong(eventBadgeType -> {
+                    final DiscountPrice criteriaDiscountPrice = eventBadgeType.criteria.getDiscountPrice();
+                    final Price price = criteriaDiscountPrice.price();
+                    return price.price();
+                }))
                 .orElse(EventBadgeType.NONE);
     }
 
