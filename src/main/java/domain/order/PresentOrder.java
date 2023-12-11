@@ -29,8 +29,8 @@ public enum PresentOrder {
     }
 
     public DiscountPrice getDiscountPrice() {
-        Price price = menu.getPrice();
-        Price multiplyPrice = price.multiply(orderCount.count());
+        final Price price = menu.getPrice();
+        final Price multiplyPrice = price.multiply(orderCount.count());
         return new DiscountPrice(multiplyPrice);
     }
 
